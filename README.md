@@ -20,4 +20,10 @@ pwsh -NoProfile -File .\sync-rime.ps1 `
 
 首次运行发送所有符合格式的词。后续仅追加未见过的词和读音。Rime 的删词、学习排序和水杉里的改动不回传。脚本跳过非纯汉字词和非全拼编码。水杉拒收的条数会显示在结果中。
 
+### 双向追加（可选）
+
+把 `merge-rime.ps1` 和 `sync-rime.ps1` 放在同一目录，在上述 Windows 命令末尾加 `-TwoWay`。请指定 `-Deployer` 和雾凇拼音的 `rime_ice.userdb.txt`，并保持 Rime 默认的设备快照目录结构。脚本先发布 Rime 新词，再把水杉里电脑上还没有的全拼词并入 Rime。合并走小狼毫的用户资料同步，成功后用新快照核对。现有词条和使用次数保留，双向追加不传播删除和排序。已有的 Rime 删除记录也会阻止同一词条被重新加回。
+
+双向模式需要每次检查 WebDAV。遇到网盘限流时，等待额度恢复后再运行。请让同一个状态目录服务同一台 Windows 电脑，并避免同时运行多个同步任务。
+
 桥接脚本使用 GPL-3.0 许可证。Rime 快照格式见 [Rime 文档](https://github.com/rime/home/wiki/UserGuide)，同步协议见 [水杉 WebDAV 文档](https://github.com/metasequoiaime/msime/blob/develop/docs/dictionary-webdav-sync.md)。

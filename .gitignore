@@ -5,4 +5,5 @@ __pycache__/
 *.userdb.txt
 webdav-connection.json
 seen.json
+received.json
 sync-state/
