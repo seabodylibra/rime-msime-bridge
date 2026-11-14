@@ -1,0 +1,8 @@
+__pycache__/
+*.log
+*.db
+*.so
+*.userdb.txt
+webdav-connection.json
+seen.json
+sync-state/
